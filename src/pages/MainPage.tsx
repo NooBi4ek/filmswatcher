@@ -6,13 +6,20 @@ import { useDispatch } from "react-redux";
 import { fetchTitle } from "../store/reducers/titleSlice";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 import { useAppSelector } from "../store/hooks";
+import Pagination from "../components/Pagination";
 
 const MainPage = () => {
   const dispatch = useDispatch<ThunkDispatch<any, void, any>>();
   const data = useAppSelector<any>((state) => state.title.titleData);
 
+  const defaultPage = 1;
+
+  const handleChange = (event: any) => {
+    dispatch(fetchTitle({ page: event.target.textContent }));
+  };
+
   useEffect(() => {
-    dispatch(fetchTitle());
+    dispatch(fetchTitle({ page: defaultPage }));
   }, []);
   if (data.length !== 0) {
     return (
@@ -37,6 +44,15 @@ const MainPage = () => {
               year={title.season.year}
             />
           ))}
+        </Stack>
+        <Stack marginTop="200px">
+          <Pagination
+            count={Number(data.pagination.pages)}
+            variant="outlined"
+            onChange={(event: any) => {
+              handleChange(event);
+            }}
+          />
         </Stack>
       </MainLayout>
     );

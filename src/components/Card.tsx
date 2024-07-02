@@ -39,7 +39,7 @@ const Card = ({ names, episodes, status, year, poster }: ICard) => {
               }}
             >
               <Typography sx={{ background: "#fff", borderRadius: "5px" }}>
-                {episodes}
+                {episodes !== null ? episodes : "Нету"}
               </Typography>
               <Typography sx={{ background: "#fff", borderRadius: "5px" }}>
                 {status}

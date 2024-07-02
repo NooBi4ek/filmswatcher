@@ -7,7 +7,7 @@ const Footer = () => {
         flexDirection: "row",
         justifyContent: "space-around",
         alignItems: "center",
-        marginTop: "200px",
+        marginTop: "50px",
         backgroundColor: "#262626",
         height: "100px",
         color: "#fff",
