@@ -3,23 +3,23 @@ import Card from "../components/Card";
 import MainLayout from "../layout/MainLayout";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { fetchTitle } from "../store/reducers/titleSlice";
+import { fetchTitles } from "../store/reducers/titlesSlice";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 import { useAppSelector } from "../store/hooks";
 import Pagination from "../components/Pagination";
 
 const MainPage = () => {
   const dispatch = useDispatch<ThunkDispatch<any, void, any>>();
-  const data = useAppSelector<any>((state) => state.title.titleData);
+  const data = useAppSelector<any>((state) => state.titles.titlesData);
 
   const defaultPage = 1;
 
   const handleChange = (event: any) => {
-    dispatch(fetchTitle({ page: event.target.textContent }));
+    dispatch(fetchTitles({ page: event.target.textContent }));
   };
 
   useEffect(() => {
-    dispatch(fetchTitle({ page: defaultPage }));
+    dispatch(fetchTitles({ page: defaultPage }));
   }, []);
   if (data.length !== 0) {
     return (

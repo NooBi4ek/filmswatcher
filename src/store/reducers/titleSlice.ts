@@ -3,8 +3,8 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 export const fetchTitle = createAsyncThunk(
     'title/fetchTitle',
-    async ({page}:any,thunkAPI) => {
-      const response = await axios.get(`https://api.anilibria.tv/v3/title/updates?filter=names,type,status,posters,season&limit=9&page=${page}`);
+    async ({id}:any,thunkAPI) => {
+      const response = await axios.get(`https://api.anilibria.tv/v3/title?id=${id}`);
       return response.data;
     }
   );
