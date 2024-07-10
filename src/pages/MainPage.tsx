@@ -18,8 +18,6 @@ const MainPage = () => {
     dispatch(fetchTitles({ page: event.target.textContent }));
   };
 
-  console.log(data);
-
   useEffect(() => {
     dispatch(fetchTitles({ page: defaultPage }));
   }, []);

@@ -31,7 +31,6 @@ export const titleSlice = createSlice({
       })
       .addCase(fetchTitle.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        console.log(action.payload);
         state.titleData = action.payload;
         state.src = action.payload.player.list[1].hls.fhd;
         state.poster = action.payload.player.list[1].preview;
