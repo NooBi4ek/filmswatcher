@@ -28,7 +28,6 @@ export const searchSlice = createSlice({
       })
       .addCase(fetchSearch.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        console.log(action.payload);
         state.searchData = action.payload;
       })
   },
