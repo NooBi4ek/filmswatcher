@@ -4,7 +4,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 export const fetchTitles = createAsyncThunk(
     'title/fetchTitles',
     async ({page}:any,thunkAPI) => {
-      const response = await axios.get(`https://api.anilibria.tv/v3/title/updates?filter=names,type,status,posters,season&limit=9&page=${page}`);
+      const response = await axios.get(`https://api.anilibria.tv/v3/title/updates?filter=id,names,type,status,posters,season&limit=9&page=${page}`);
       return response.data;
     }
   );
@@ -26,7 +26,6 @@ export const titlesSlice = createSlice({
       })
       .addCase(fetchTitles.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        console.log(action.payload);
         state.titlesData = action.payload;
       })
   },

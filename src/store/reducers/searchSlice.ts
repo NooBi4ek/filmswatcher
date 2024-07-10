@@ -17,7 +17,9 @@ export const searchSlice = createSlice({
     status: 'idle',
   },
   reducers: {
-    
+    clearSearchData (state) {
+      state.searchData = [];
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -32,6 +34,6 @@ export const searchSlice = createSlice({
   },
 });
 
-export const {  } = searchSlice.actions;
+export const { clearSearchData } = searchSlice.actions;
 
 export default searchSlice.reducer;

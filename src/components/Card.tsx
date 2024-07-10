@@ -1,8 +1,19 @@
 import { Box, Stack, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../store/hooks";
+import { fetchTitle } from "../store/reducers/titleSlice";
 
-const Card = ({ names, episodes, status, year, poster }: ICard) => {
+const Card = ({ id, names, episodes, status, year, poster }: ICard) => {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  const handleClick = () => {
+    navigate(`${id}`);
+    dispatch(fetchTitle({ id }));
+  };
+
   return (
-    <Box sx={{ height: "300px", textAlign: "center" }}>
+    <Box sx={{ textAlign: "center", cursor: "pointer" }} onClick={handleClick}>
       <Box
         sx={{
           width: "300px",
@@ -12,6 +23,7 @@ const Card = ({ names, episodes, status, year, poster }: ICard) => {
           boxSizing: "border-box",
           padding: "10px 20px",
           margin: "30px 0",
+          userSelect: "none",
         }}
       >
         <Stack

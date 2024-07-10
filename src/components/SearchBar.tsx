@@ -1,8 +1,9 @@
 import { Stack, Typography } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchTitle } from "../store/reducers/titleSlice";
+import { clearSearchData } from "../store/reducers/searchSlice";
 
 interface Props {
   focusValue: boolean;
@@ -15,8 +16,9 @@ const SearchBar: FC<Props> = ({ focusValue, handleBlur }) => {
   const dispatch = useAppDispatch();
 
   const handleClick = (id: any) => {
-    navigate(`${id}`);
+    navigate(`/${id}`);
     dispatch(fetchTitle({ id }));
+    dispatch(clearSearchData());
     handleBlur();
   };
 
@@ -28,7 +30,7 @@ const SearchBar: FC<Props> = ({ focusValue, handleBlur }) => {
           position: "absolute",
           marginTop: "40px",
           background: "#000",
-          maxWidth: "400px",
+          maxWidth: "40vw",
           maxHeight: "200px",
           overflowY: "auto",
         }}

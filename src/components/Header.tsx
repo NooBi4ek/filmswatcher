@@ -1,10 +1,18 @@
-import { Stack } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import Search from "./Search";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/");
+  };
+
   return (
     <Stack
       sx={{
+        maxWidth: "100vw",
         flexDirection: "row",
         justifyContent: "space-around",
         alignItems: "center",
@@ -15,7 +23,9 @@ const Header = () => {
       }}
     >
       <div>Категории</div>
-      <div>Главная</div>
+      <Typography onClick={handleClick} sx={{ cursor: "pointer" }}>
+        Главная
+      </Typography>
       <Search />
     </Stack>
   );

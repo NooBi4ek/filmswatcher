@@ -18,6 +18,8 @@ const MainPage = () => {
     dispatch(fetchTitles({ page: event.target.textContent }));
   };
 
+  console.log(data);
+
   useEffect(() => {
     dispatch(fetchTitles({ page: defaultPage }));
   }, []);
@@ -31,12 +33,13 @@ const MainPage = () => {
             justifyContent: "center",
             flexWrap: "wrap",
             gap: "300px",
-            margin: "0 auto",
+            margin: "0 auto 50px auto",
           }}
         >
           {data.list.map((title: any) => (
             <Card
               key={title.id}
+              id={title.id}
               poster={title.posters.small.url}
               names={title.names.ru}
               episodes={title.type.episodes}
@@ -45,7 +48,7 @@ const MainPage = () => {
             />
           ))}
         </Stack>
-        <Stack marginTop="200px">
+        <Stack>
           <Pagination
             count={Number(data.pagination.pages)}
             variant="outlined"

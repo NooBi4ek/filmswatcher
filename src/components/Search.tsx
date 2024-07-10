@@ -1,9 +1,10 @@
 import { Stack, TextField, IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useAppDispatch } from "../store/hooks";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { fetchSearch } from "../store/reducers/searchSlice";
 import SearchBar from "./SearchBar";
+import { useNavigate } from "react-router-dom";
 
 const Search = () => {
   const [inputValue, setInputValue] = useState("");
@@ -38,7 +39,7 @@ const Search = () => {
         placeholder="Search..."
         size="small"
         sx={{
-          width: "400px",
+          width: "40vw",
           ".MuiOutlinedInput-input": {
             color: "#fff",
           },

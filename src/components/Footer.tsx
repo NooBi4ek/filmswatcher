@@ -4,6 +4,7 @@ const Footer = () => {
   return (
     <Stack
       sx={{
+        maxWidth: "100vw",
         flexDirection: "row",
         justifyContent: "space-around",
         alignItems: "center",

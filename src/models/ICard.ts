@@ -1,4 +1,5 @@
 interface ICard { 
+    id:number,
     names: string,
     episodes: string,
     status: string, 
