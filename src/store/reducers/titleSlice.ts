@@ -32,8 +32,23 @@ export const titleSlice = createSlice({
       .addCase(fetchTitle.fulfilled, (state, action) => {
         state.status = 'succeeded';
         state.titleData = action.payload;
-        state.src = action.payload.player.list[1].hls.fhd;
-        state.poster = action.payload.player.list[1].preview;
+
+        if(action.payload.player.list[1].hls.fhd!==null) {
+          state.src = action.payload.player.list[1].hls.fhd;
+        }
+        
+        else {
+          state.src = action.payload.player.list[1].hls.hd;
+        }
+
+        if(action.payload.player.list[1].preview!==null) {
+          state.poster = action.payload.player.list[1].preview;
+        }
+
+        else {
+          state.poster = action.payload.posters.medium.url;
+        }
+        
       })
   },
 });

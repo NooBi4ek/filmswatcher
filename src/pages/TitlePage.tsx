@@ -83,7 +83,12 @@ const TitlePage = () => {
               <Button
                 key={key}
                 onClick={() => {
-                  handleClick(item.hls.fhd, item.preview);
+                  handleClick(
+                    item.hls.fhd !== null ? item.hls.fhd : item.hls.hd,
+                    item.preview !== null
+                      ? item.preview
+                      : titleData.posters.small.url
+                  );
                 }}
                 variant="outlined"
               >
