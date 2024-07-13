@@ -60,6 +60,7 @@ const TitlePage = () => {
           </Stack>
           <Stack
             sx={{
+              maxWidth: "50vw",
               marginTop: "100px",
               marginBottom: "5vh",
             }}
