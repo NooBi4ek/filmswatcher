@@ -60,7 +60,7 @@ const TitlePage = () => {
           </Stack>
           <Stack
             sx={{
-              maxWidth: "50vw",
+              maxWidth: "70vw",
               marginTop: "100px",
               marginBottom: "5vh",
             }}
@@ -69,6 +69,8 @@ const TitlePage = () => {
               url={`https://cache.libria.fun${src}`}
               playing={false}
               controls
+              width="100%"
+              height="100%"
               light={`https://anilibria.tv${poster}`}
             />
           </Stack>
