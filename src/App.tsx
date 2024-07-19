@@ -6,7 +6,8 @@ const App = () => {
   return (
     <Routes>
       <Route path="*" element={<MainPage />} />
-      <Route path="/:id" element={<TitlePage />} />
+      <Route path="Жанр/:genres" element={<MainPage />} />
+      <Route path="Аниме/:id" element={<TitlePage />} />
     </Routes>
   );
 };

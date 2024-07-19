@@ -70,7 +70,6 @@ const TitlePage = () => {
               playing={false}
               controls
               width="100%"
-              height="100%"
               light={`https://anilibria.tv${poster}`}
             />
           </Stack>
@@ -78,8 +77,10 @@ const TitlePage = () => {
             sx={{
               flexDirection: "row",
               gap: "20px",
-              maxWidth: "40vw",
+              maxWidth: "70vw",
               flexWrap: "wrap",
+              maxHeight: "400px",
+              overflowY: "auto",
             }}
           >
             {Object.entries(titleData.player.list).map(([key, item]: any) => (

@@ -8,7 +8,7 @@ const Card = ({ id, names, episodes, status, year, poster }: ICard) => {
   const dispatch = useAppDispatch();
 
   const handleClick = () => {
-    navigate(`${id}`);
+    navigate(`Аниме/${id}`);
     dispatch(fetchTitle({ id }));
   };
 
@@ -51,7 +51,7 @@ const Card = ({ id, names, episodes, status, year, poster }: ICard) => {
               }}
             >
               <Typography sx={{ background: "#fff", borderRadius: "5px" }}>
-                {episodes !== null ? episodes : "Нету"}
+                {episodes !== null ? episodes : "Неизвестно"}
               </Typography>
               <Typography sx={{ background: "#fff", borderRadius: "5px" }}>
                 {status}

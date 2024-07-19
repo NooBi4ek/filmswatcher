@@ -1,12 +1,17 @@
 import { Stack, Typography } from "@mui/material";
 import Search from "./Search";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import Genres from "./Genres";
+import { useAppDispatch } from "../store/hooks";
+import { fetchTitles } from "../store/reducers/titlesSlice";
 
 const Header = () => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const handleClick = () => {
     navigate("/");
+    dispatch(fetchTitles({ page: 1 }));
   };
 
   return (
@@ -22,7 +27,7 @@ const Header = () => {
         color: "#fff",
       }}
     >
-      <div>Категории</div>
+      <Genres />
       <Typography onClick={handleClick} sx={{ cursor: "pointer" }}>
         Главная
       </Typography>

@@ -16,7 +16,7 @@ const SearchBar: FC<Props> = ({ focusValue, handleBlur }) => {
   const dispatch = useAppDispatch();
 
   const handleClick = (id: any) => {
-    navigate(`/${id}`);
+    navigate(`/Аниме/${id}`);
     dispatch(fetchTitle({ id }));
     dispatch(clearSearchData());
     handleBlur();

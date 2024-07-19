@@ -33,6 +33,7 @@ export const titleSlice = createSlice({
         state.status = 'succeeded';
         state.titleData = action.payload;
 
+
         if(action.payload.player.list[1].hls.fhd!==null) {
           state.src = action.payload.player.list[1].hls.fhd;
         }
