@@ -1,6 +1,6 @@
 import { Stack, Typography } from "@mui/material";
 import Search from "./Search";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Genres from "./Genres";
 import { useAppDispatch } from "../store/hooks";
 import { fetchTitles } from "../store/reducers/titlesSlice";

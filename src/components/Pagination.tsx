@@ -20,7 +20,7 @@ const StyledPagination = styled(MuiPagination)({
   margin: "0 auto",
 
   ".MuiPaginationItem-root": {
-    color: "#000",
+    color: "#fff",
     borderRadius: "1px solid #fff",
   },
   ".MuiPagination-ul": {

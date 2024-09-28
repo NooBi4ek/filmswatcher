@@ -2,43 +2,62 @@ import { Box, Stack, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../store/hooks";
 import { fetchTitle } from "../store/reducers/titleSlice";
+import { useState } from "react";
 
 const Card = ({ id, names, episodes, status, year, poster }: ICard) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+
+  const [hoverCard, setHoverCard] = useState<boolean>(false);
 
   const handleClick = () => {
     navigate(`Аниме/${id}`);
     dispatch(fetchTitle({ id }));
   };
 
+  const handleMouseEvent = (e: boolean) => {
+    setHoverCard(e);
+  };
+
   return (
-    <Box sx={{ textAlign: "center", cursor: "pointer" }} onClick={handleClick}>
-      <Box
+    <Box
+      sx={{
+        width: "400px",
+        height: "400px",
+        borderRadius: "10px",
+        backgroundImage: `url(https://anilibria.tv/${poster})`,
+        boxSizing: "border-box",
+        userSelect: "none",
+      }}
+      onClick={handleClick}
+      onMouseEnter={(e) => handleMouseEvent(true)}
+      onMouseLeave={(e) => handleMouseEvent(false)}
+    >
+      <Stack
         sx={{
-          width: "300px",
-          height: "300px",
+          height: "100%",
+          width: "100%",
+          background: hoverCard ? "rgba(0,0,0,0.5)" : "",
           borderRadius: "10px",
-          backgroundImage: `url(https://anilibria.tv/${poster})`,
-          boxSizing: "border-box",
-          padding: "10px 20px",
-          margin: "30px 0",
-          userSelect: "none",
+          flexDirection: "column",
         }}
       >
         <Stack
-          flexDirection="row"
-          gap="30px"
-          height="100%"
-          width="100%"
-          flex="1"
+          sx={{
+            display: hoverCard ? "" : "none",
+            flexDirection: "row",
+            flex: "1",
+            padding: "20px 20px",
+            ":hover": {
+              transition: "0.5s ease",
+            },
+          }}
         >
           <Stack
             sx={{
               width: "100%",
               height: "100%",
               flexDirection: "column",
-              gap: "15px",
               justifyContent: "space-between",
             }}
           >
@@ -48,30 +67,33 @@ const Card = ({ id, names, episodes, status, year, poster }: ICard) => {
                 flexDirection: "row",
                 justifyContent: "space-between",
                 alignItems: "flex-start",
+                color: "#fff",
               }}
             >
-              <Typography sx={{ background: "#fff", borderRadius: "5px" }}>
+              <Typography>
                 {episodes !== null ? episodes : "Неизвестно"}
               </Typography>
-              <Typography sx={{ background: "#fff", borderRadius: "5px" }}>
-                {status}
-              </Typography>
+              <Typography>{status}</Typography>
             </Stack>
             <Stack
               sx={{
                 flexDirection: "row",
-                justifyContent: "space-between",
-                alignItems: "flex-start",
+                textAlign: "center",
+                color: "#fff",
+                transition: "all 1s ease",
               }}
             >
-              <Typography sx={{ background: "#fff", borderRadius: "5px" }}>
-                {year}
+              <Typography
+                sx={{
+                  width: "100%",
+                }}
+              >
+                {names}
               </Typography>
             </Stack>
           </Stack>
         </Stack>
-      </Box>
-      <Typography sx={{ width: "300px" }}>{names}</Typography>
+      </Stack>
     </Box>
   );
 };
